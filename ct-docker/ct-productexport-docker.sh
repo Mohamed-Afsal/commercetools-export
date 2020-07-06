@@ -4,10 +4,10 @@ echo "*************************************"
 echo "*******Generating Access Token*******"
 echo "*************************************"
 
-if [ $@ = foodl-dev-36 ]
+if [ $@ == foodl-dev-36 ]
 then
     accesstoken=$(curl https://auth.europe-west1.gcp.commercetools.com/oauth/token -X POST --basic --user "${dev_clientid}:${dev_clientsecret}" -d "grant_type=client_credentials&scope=manage_project:$@" | awk -F',' '{print $1}' | awk -F':' '{print $2}')
-elif [ $@ = foodl-prod-1 ]
+elif [ $@ == foodl-prod-1 ]
 then
     accesstoken=$(curl https://auth.europe-west1.gcp.commercetools.com/oauth/token -X POST --basic --user "${prod_clientid}:${prod_clientsecret}" -d "grant_type=client_credentials&scope=manage_project:$@" | awk -F',' '{print $1}' | awk -F':' '{print $2}')
 else
