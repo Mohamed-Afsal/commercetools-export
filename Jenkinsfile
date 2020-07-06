@@ -72,22 +72,22 @@ pipeline {
             }
         }
 
-        stage('exporting Data type Product') {
+        stage('Exporting Data type Product') {
             steps {
                 sh "ct-docker/ct-productexport-docker.sh ${params.Projectkey}"
             }
         }
-        stage('exporting Data type Price') {
+        stage('Exporting Data type Price') {
             steps {
                 sh "ct-docker/ct-priceexport-docker.sh ${params.Projectkey}"
             }
         }
-        stage('exporting Data type inventory') {
+        stage('Exporting Data type inventory') {
             steps {
                 sh "ct-docker/ct-inventoryexport-docker.sh ${params.Projectkey}"
             }
         }
-        stage('exporting Data type category') {
+        stage('Exporting Data type category') {
             steps {
                 sh "ct-docker/ct-categoryexport-docker.sh ${params.Projectkey}"
             }
