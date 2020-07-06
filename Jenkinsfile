@@ -11,6 +11,7 @@ pipeline {
     environment {
         clientid = credentials('client-id')
         clientsecret = credentials('client-secret')
+        TRY_COUNT = 5
     }
 
     parameters {
