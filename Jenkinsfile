@@ -16,6 +16,8 @@ pipeline {
     parameters {
         string(name: 'BRANCH', defaultValue: 'master', description: 'Branch to build.')
         choice(name: 'Project-key', choices: 'foodl-dev-36\nfoodl-prod-1\nfoodl-acc-1', description: 'Project Key to export')
+        booleanParam(name: 'DEBUG', defaultValue: false, description: 'Whether or not to enable debug logging.')
+        choice(name: 'DO_CLEAN', choices: 'true\nfalse\nauto\n', description: 'Whether or not to clean the workspace.')
     }
     stages {
 
