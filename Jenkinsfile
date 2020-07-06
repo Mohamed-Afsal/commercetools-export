@@ -9,8 +9,8 @@ pipeline {
         ansiColor('xterm')
     }
     environment {
-        clientid = credentials('client\\-id')
-        clientsecret = credentials('client\\-secret')
+        clientid = credentials('client-id')
+        clientsecret = credentials('client-secret')
     }
 
     parameters {
