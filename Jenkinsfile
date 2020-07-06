@@ -11,7 +11,7 @@ pipeline {
     environment {
         clientid = credentials('client-id')
         clientsecret = credentials('client-secret')
-   }
+    }
 
     parameters {
         string(name: 'BRANCH', defaultValue: 'master', description: 'Branch to build.')
