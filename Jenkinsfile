@@ -15,7 +15,7 @@ pipeline {
 
     parameters {
         string(name: 'BRANCH', defaultValue: 'master', description: 'Branch to build.')
-        choice(name: 'Project-key', choices: 'foodl-dev-36\nfoodl-prod-1\nfoodl-acc-1', description: 'Project Key to export')
+        choice(name: 'Projectkey', choices: 'foodl-dev-36\nfoodl-prod-1\nfoodl-acc-1', description: 'Project Key to export')
         booleanParam(name: 'DEBUG', defaultValue: false, description: 'Whether or not to enable debug logging.')
         choice(name: 'DO_CLEAN', choices: 'true\nfalse\nauto\n', description: 'Whether or not to clean the workspace.')
     }
@@ -61,22 +61,22 @@ pipeline {
         }
         stage('exporting Data type Product') {
             steps {
-                sh "./ct-docker/ct-productexport-docker.sh ${params.Project-key}"
+                sh "ct-docker/ct-productexport-docker.sh ${params.Projectkey}"
             }
         }
         stage('exporting Data type Price') {
             steps {
-                sh "./ct-docker/ct-priceexport-docker.sh ${params.Project-key}"
+                sh "ct-docker/ct-priceexport-docker.sh ${params.Projectkey}"
             }
         }
         stage('exporting Data type inventory') {
             steps {
-                sh "./ct-docker/ct-inventoryexport-docker.sh ${params.Project-key}"
+                sh "ct-docker/ct-inventoryexport-docker.sh ${params.Projectkey}"
             }
         }
         stage('exporting Data type category') {
             steps {
-                sh "./ct-docker/ct-categoryexport-docker.sh ${params.Project-key}"
+                sh "ct-docker/ct-categoryexport-docker.sh ${params.Projectkey}"
             }
         }
     }
