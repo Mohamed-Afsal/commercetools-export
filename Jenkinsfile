@@ -11,13 +11,13 @@ pipeline {
    environment {
         clientid = credentials('client-id')
         clientsecret = credentials('client-secret')
-    }
+   }
 
-parameters {
-        string(name: 'BRANCH', defaultValue: 'master', description: 'Branch to build.')
-  	choice(name: 'Project-key', choices: 'foodl-dev-36\nfoodl-prod-1\nfoodl-acc-1', description: 'Project Key to export')
-}
-    stages {
+   parameters {
+       string(name: 'BRANCH', defaultValue: 'master', description: 'Branch to build.')
+       choice(name: 'Project-key', choices: 'foodl-dev-36\nfoodl-prod-1\nfoodl-acc-1', description: 'Project Key to export')
+   }
+   stages {
 
         stage('Pre') {
             parallel {
