@@ -8,16 +8,16 @@ pipeline {
         timeout(time: 10, unit: 'MINUTES')
         ansiColor('xterm')
     }
-   environment {
+    environment {
         clientid = credentials('client-id')
         clientsecret = credentials('client-secret')
    }
 
-   parameters {
-       string(name: 'BRANCH', defaultValue: 'master', description: 'Branch to build.')
-       choice(name: 'Project-key', choices: 'foodl-dev-36\nfoodl-prod-1\nfoodl-acc-1', description: 'Project Key to export')
-   }
-   stages {
+    parameters {
+        string(name: 'BRANCH', defaultValue: 'master', description: 'Branch to build.')
+        choice(name: 'Project-key', choices: 'foodl-dev-36\nfoodl-prod-1\nfoodl-acc-1', description: 'Project Key to export')
+    }
+    stages {
 
         stage('Pre') {
             parallel {
@@ -40,8 +40,8 @@ pipeline {
                                 } else {
                                     echo 'Previous build was today. Setting FIRST_BUILD_OF_DAY=false'
                                     env.FIRST_BUILD_OF_DAY = 'false'
-                                }
-                            }
+                                  }
+                              } 
 
                             env.DO_CLEAN = params.DO_CLEAN == 'true' || (params.DO_CLEAN != 'false' && env.FIRST_BUILD_OF_DAY == 'true')
                             echo "DO_CLEAN resolved to: ${env.DO_CLEAN}"
@@ -77,5 +77,5 @@ pipeline {
                 sh "./ct-docker/ct-categoryexport-docker.sh ${params.Project-key}"
             }
         }
-  }
+    }
 }
