@@ -18,6 +18,7 @@ pipeline {
         choice(name: 'Projectkey', choices: 'foodl-dev-36\nfoodl-prod-1\nfoodl-acc-1', description: 'Project Key to export')
         booleanParam(name: 'DEBUG', defaultValue: false, description: 'Whether or not to enable debug logging.')
         choice(name: 'DO_CLEAN', choices: 'true\nfalse\nauto\n', description: 'Whether or not to clean the workspace.')
+        booleanParam(name: 'DO_CHECKOUT', defaultValue: true, description: 'Whether or not to perform a checkout.')
     }
     stages {
 
@@ -59,6 +60,17 @@ pipeline {
                 }
             }
         }
+        stage('Checkout') {
+            when { expression { params.DO_CHECKOUT } }
+            steps {
+                retry(env.TRY_COUNT) {
+                    timeout(time: 150, unit: 'SECONDS') {
+                       checkout scm
+                    }
+                }
+            }
+        }
+
         stage('exporting Data type Product') {
             steps {
                 sh "ct-docker/ct-productexport-docker.sh ${params.Projectkey}"
