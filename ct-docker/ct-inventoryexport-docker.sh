@@ -11,7 +11,7 @@ echo "***Exporting Commercetools inventory***"
 echo "*************************************"
 
 #TIMESTAMP=$(date "+%Y.%m.%d-%H.%M.%S")
-OutputFile="/opt/ct-data/inventory.csv"
+OutputFile="/opt/ct-data/$@_inventory.csv"
 
 docker run --rm --name commercetools -v /opt/ct-data/:/opt/ct-data/ commercetools:latest inventoriesexporter --projectKey $@ --apiUrl https://api.sphere.io --authUrl https://auth.sphere.io --accessToken $accesstoken -o $OutputFile
 

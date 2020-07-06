@@ -11,7 +11,7 @@ echo "***Exporting Commercetools Price***"
 echo "*************************************"
 
 #TIMESTAMP=$(date "+%Y.%m.%d-%H.%M.%S")
-OutputFile="/opt/ct-data/price.csv"
+OutputFile="/opt/ct-data/$@_price.csv"
 
 
 
