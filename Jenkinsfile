@@ -5,7 +5,7 @@ pipeline {
         buildDiscarder(logRotator(daysToKeepStr: '40'))
         skipDefaultCheckout()
         timestamps()
-        timeout(time: 10, unit: 'MINUTES')
+        timeout(time: 30, unit: 'MINUTES')
         ansiColor('xterm')
     }
     environment {
