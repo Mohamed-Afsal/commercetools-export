@@ -14,5 +14,5 @@ RUN npm install @commercetools/price-exporter --global
 RUN npm install @commercetools/product-exporter --global		 
 RUN npm install @commercetools/inventories-exporter --global		
 
-COPY /opt/ct-data/ /opt/ct-data/
+RUN mkdir -p /opt/ct-data/
 
